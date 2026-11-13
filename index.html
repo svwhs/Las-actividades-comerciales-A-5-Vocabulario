@@ -95,7 +95,7 @@
   .seg button.on{background:var(--c);color:#fff}
 
   /* Flashcards */
-  .flash{perspective:1200px;margin:12px auto 16px;max-width:560px;height:230px;cursor:pointer;outline:none}
+  .flash{perspective:1200px;margin:12px auto 16px;max-width:560px;height:300px;cursor:pointer;outline:none}
   .flash-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
   .flash.flipped .flash-inner{transform:rotateY(180deg)}
   .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
@@ -103,6 +103,9 @@
   .face.back{background:linear-gradient(135deg,#fed7aa,#fef08a);border:3px solid #fdba74;transform:rotateY(180deg)}
   .face .big{font-family:'Baloo 2';font-size:2.2rem;font-weight:800;line-height:1.1}
   .face .def{font-size:1.25rem;font-weight:700}
+  .pic{height:100px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+  .pic svg{height:100px;width:auto}
+  .pic .emo{font-size:3.6rem;line-height:1;letter-spacing:.08em}
   .face .hint{position:absolute;bottom:10px;font-size:.78rem;color:var(--muted)}
 
   /* MC */
@@ -234,12 +237,12 @@
       <text x="125" y="70" text-anchor="middle" font-family="Baloo 2, Nunito, sans-serif" font-weight="800" font-size="12" fill="#db2777">fresco!</text>
     </symbol>
     <symbol id="sym-shopper" viewBox="0 0 160 120">
-      <circle cx="72" cy="26" r="15" fill="#f5c9a6"/>
-      <path d="M57 24 q2 -18 17 -16 q14 1 13 16 q-6 -9 -15 -8 q-9 0 -15 8z" fill="#7c2d12"/>
+      <circle cx="72" cy="26" r="15" fill="#a86b42"/>
+      <path d="M57 24 q2 -18 17 -16 q14 1 13 16 q-6 -9 -15 -8 q-9 0 -15 8z" fill="#1f120c"/>
       <rect x="54" y="42" width="36" height="46" rx="12" fill="#db2777"/>
       <rect x="58" y="86" width="11" height="26" rx="4" fill="#3b1d14"/><rect x="75" y="86" width="11" height="26" rx="4" fill="#3b1d14"/>
-      <path d="M88 56 l18 14" stroke="#f5c9a6" stroke-width="7" stroke-linecap="round"/>
-      <path d="M56 56 l-14 16" stroke="#f5c9a6" stroke-width="7" stroke-linecap="round"/>
+      <path d="M88 56 l18 14" stroke="#a86b42" stroke-width="7" stroke-linecap="round"/>
+      <path d="M56 56 l-14 16" stroke="#a86b42" stroke-width="7" stroke-linecap="round"/>
       <path d="M100 70 q10 -16 20 0" stroke="#ca8a04" stroke-width="3" fill="none"/>
       <rect x="96" y="70" width="32" height="38" rx="3" fill="#facc15"/>
       <text x="112" y="94" text-anchor="middle" font-family="Baloo 2, Nunito, sans-serif" font-weight="800" font-size="14" fill="#9a3412">$</text>
@@ -442,13 +445,25 @@ function roundResult(el, score, total, missed, again, retry, extra){
   const r=el.querySelector('[data-a="retry"]'); if(r) r.onclick=()=>retry(missed);
 }
 
+const PICS = {
+ "apelaciones":"⚖️📝","atributos":"⭐✅","clasistas":"🎩🚫👷","consumismo":"🛍️🛍️🛍️","difusión":"📡📢",
+ "invención":"💡⚙️","logotipo":"#sym-logo","potenciales":"🌱➡️🌳","pregonen":"#sym-megaphone","sector":"🧩",
+ "sexistas":"🚺🚫🚹","solidaridad":"🤝❤️","anuncios":"📺📰","competencia":"🏪🆚🏪","consumidor":"#sym-shopper",
+ "datos demográficos":"📊👥","eslogan":"#sym-logo","folletos":"#sym-brochure","grupos focales":"👥💬","mercado":"#sym-stall",
+ "público objetivo":"🎯👥","vallas publicitarias":"#sym-billboard","adversamente":"👎⛈️","adyacentes":"🏠🏠","consolidar":"🧱🔗",
+ "debilitado":"🪫","disputas":"😠🗯️","favorecían":"👍✨","muelles":"⚓🚢","pericia":"🧠🛠️","vasto":"🏜️",
+ "cálido":"☀️🌡️","caudalosos":"🌊🏞️","escarpadas":"⛰️🧗","impuestos":"💰🏛️","mercaderes":"🐪📦","monopolio":"👑🏭",
+ "sierra":"🏔️🏔️","templado":"🌤️🍃","yacimientos":"⛏️💎🦴","bienes de producción":"🏭⚙️","chalet":"🏡",
+ "consumo":"🛒🍎","frenético":"🏃💨","necesidades":"🍞💧🏠","ostentosamente":"💎🕶️","propaganda":"📢🗞️","salario":"💵👷"
+};
+function pic(w){ const v=PICS[w.term]; if(!v) return ""; return `<div class="pic">${v[0]==="#"?`<svg viewBox="0 0 160 120" aria-hidden="true"><use href="${v}"/></svg>`:`<span class="emo" aria-hidden="true">${v}</span>`}</div>`; }
 /* ---------- Paso 1: Tarjetas ---------- */
 const Flash = (()=>{
   const el=$("act-tarjetas"); let S;
   function start(){ S={order:shuffle(pool()), i:0, flipped:false, front:(S&&S.front)||"term"}; draw(); }
   function draw(){
     const w=S.order[S.i]; flashSeen.add(w.id);
-    const termSide = `<div class="big">${esc(w.term)}</div><div class="pos">(${esc(w.pos)})</div>`;
+    const termSide = `${pic(w)}<div class="big">${esc(w.term)}</div><div class="pos">(${esc(w.pos)})</div>`;
     const defSide = `<div class="def">${esc(w.def)}</div><div class="pos" style="margin-top:6px">(${esc(w.pos)})</div>`;
     el.innerHTML = head(1,"Tarjetas","Repasa las palabras. Haz clic en la tarjeta para voltearla.",`${S.i+1} / ${S.order.length}`) + `
       <div class="topline"><span>Tarjeta ${S.i+1} de ${S.order.length}</span>
