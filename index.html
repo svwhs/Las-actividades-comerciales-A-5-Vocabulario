@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vocabulario: Las actividades comerciales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff7ed; --card:#ffffff; --ink:#3b1d14; --muted:#8a5a4a; --line:#f6d9c9;
+    --pink:#db2777; --pink-soft:#fce7f3;
+    --red:#dc2626; --red-soft:#fee2e2;
+    --orange:#ea580c; --orange-soft:#ffedd5;
+    --yellow:#ca8a04; --yellow-soft:#fef9c3;
+    --rose:#e11d48; --rose-soft:#ffe4e6;
+    --good:#15803d; --good-soft:#dcfce7; --bad:#b91c1c; --bad-soft:#fee2e2; --warn:#a16207; --warn-soft:#fef3c7;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Nunito',system-ui,sans-serif;color:var(--ink);line-height:1.45;
+    background:var(--bg);
+    background-image:radial-gradient(circle at 10% 0%,#fde2e4 0,transparent 35%),radial-gradient(circle at 95% 20%,#fef3c7 0,transparent 30%),radial-gradient(circle at 50% 100%,#ffe4e6 0,transparent 40%);
+    background-attachment:fixed}
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px 70px}
+  h1,h2,.display{font-family:'Baloo 2','Nunito',sans-serif}
+
+  /* Header */
+  .hero{margin:0 -16px;padding:38px 24px 34px;text-align:center;color:#fff;
+    background:linear-gradient(120deg,#ec4899 0%,#ef4444 35%,#f97316 70%,#facc15 100%);
+    border-radius:0 0 32px 32px;box-shadow:0 8px 24px rgba(239,68,68,.25);position:relative;overflow:hidden}
+  .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.14)}
+  .hero:before{width:220px;height:220px;left:-60px;top:-80px}
+  .hero:after{width:160px;height:160px;right:-40px;bottom:-70px}
+  .hero h1{margin:0;font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.1;text-shadow:0 2px 0 rgba(0,0,0,.12);position:relative}
+  .hero p{margin:10px 0 0;font-weight:700;opacity:.95;position:relative}
+
+  /* Generic card + steps */
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:0 4px 16px rgba(180,60,30,.10);padding:22px;margin-top:22px;border-top:8px solid var(--c,var(--orange))}
+  .step{--c:var(--orange);--soft:var(--orange-soft)}
+  .s-pink{--c:var(--pink);--soft:var(--pink-soft)}
+  .s-red{--c:var(--red);--soft:var(--red-soft)}
+  .s-orange{--c:var(--orange);--soft:var(--orange-soft)}
+  .s-yellow{--c:var(--yellow);--soft:var(--yellow-soft)}
+  .s-rose{--c:var(--rose);--soft:var(--rose-soft)}
+  .step-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .num{flex:none;width:46px;height:46px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2';font-weight:800;font-size:1.4rem;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+  .step-head h2{margin:0;font-size:1.5rem;color:var(--c);line-height:1.1}
+  .step-head .sub{color:var(--muted);font-weight:600;font-size:.95rem}
+  .tag{display:inline-block;vertical-align:middle;margin-left:8px;font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:3px 9px;position:relative;top:-2px}
+  .tag.req{background:#dc2626;color:#fff}
+  .tag.opt{background:#fff;color:var(--muted);border:2px dashed var(--line)}
+  .tag.done{background:#16a34a;color:#fff}
+  .status{border-radius:12px;padding:12px 16px;font-weight:800;margin-top:12px}
+  .status.ok{background:var(--good-soft);color:var(--good)}
+  .status.pending{background:var(--red-soft);color:var(--bad)}
+  .sum-table tr.optional td{color:var(--muted)}
+  .badge{margin-left:auto;background:var(--soft);color:var(--c);font-weight:800;border-radius:999px;padding:4px 12px;font-size:.85rem;white-space:nowrap}
+  .connector{width:4px;height:22px;margin:0 auto -22px;background:repeating-linear-gradient(to bottom,#f9a8a8 0 6px,transparent 6px 11px)}
+
+  /* Student info */
+  .info{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+  .info label{display:block;font-weight:800;font-size:.85rem;color:var(--muted);margin-bottom:4px}
+  .info input{width:100%;font:inherit;font-size:1.05rem;padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:#fffdfb}
+  .info input:focus{outline:none;border-color:var(--pink)}
+  @media(max-width:620px){.info{grid-template-columns:1fr 1fr}.info .full{grid-column:1/-1}}
+
+  .label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 8px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer;color:var(--muted)}
+  .chip.on{border-color:var(--orange);background:var(--orange-soft);color:var(--orange)}
+  .chip .n{opacity:.7;font-weight:600}
+
+  .btn{border:none;border-radius:12px;padding:10px 18px;font:inherit;font-weight:800;cursor:pointer;background:var(--c,var(--orange));color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+  .btn:hover{filter:brightness(1.08)}
+  .btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.15)}
+  .btn.ghost{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:none}
+  .btn:disabled{opacity:.45;cursor:default}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .center{text-align:center}
+  .muted{color:var(--muted)}
+  .pos{font-style:italic;color:var(--muted);font-weight:600}
+  .progress{height:10px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 16px}
+  .progress > div{height:100%;background:var(--c);transition:width .3s;border-radius:99px}
+  .topline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--muted);font-weight:700;font-size:.9rem;margin-top:10px}
+  .seg{display:inline-flex;border:2px solid var(--line);border-radius:10px;overflow:hidden}
+  .seg button{border:none;background:#fff;font:inherit;font-weight:700;padding:5px 11px;cursor:pointer;color:var(--muted);font-size:.85rem}
+  .seg button.on{background:var(--c);color:#fff}
+
+  /* Flashcards */
+  .flash{perspective:1200px;margin:12px auto 16px;max-width:560px;height:230px;cursor:pointer;outline:none}
+  .flash-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+  .flash.flipped .flash-inner{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+  .face.front{background:linear-gradient(135deg,#fbcfe8,#fecdd3);border:3px solid #f9a8d4}
+  .face.back{background:linear-gradient(135deg,#fed7aa,#fef08a);border:3px solid #fdba74;transform:rotateY(180deg)}
+  .face .big{font-family:'Baloo 2';font-size:2.2rem;font-weight:800;line-height:1.1}
+  .face .def{font-size:1.25rem;font-weight:700}
+  .face .hint{position:absolute;bottom:10px;font-size:.78rem;color:var(--muted)}
+
+  /* MC */
+  .prompt{font-size:1.25rem;font-weight:700;margin:4px 0 16px}
+  .opts{display:grid;gap:10px}
+  .opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 16px;font:inherit;font-size:1.02rem;cursor:pointer;color:var(--ink)}
+  .opt b{color:var(--c)}
+  .opt:hover:not(:disabled){border-color:var(--c);background:var(--soft)}
+  .opt.good{border-color:var(--good);background:var(--good-soft)}
+  .opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+  .opt:disabled{cursor:default}
+  .feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-weight:700}
+  .feedback.good{background:var(--good-soft);color:var(--good)}
+  .feedback.bad{background:var(--bad-soft);color:var(--bad)}
+  .feedback.warn{background:var(--warn-soft);color:var(--warn)}
+
+  /* Matching */
+  .match{display:grid;grid-template-columns:1fr 1.6fr;gap:12px}
+  .match .col{display:grid;gap:8px;align-content:start}
+  .tile{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font:inherit;text-align:left;cursor:pointer;font-size:.95rem;min-height:48px;color:var(--ink)}
+  .tile.term{font-weight:800;background:var(--soft)}
+  .tile.sel{border-color:var(--c);box-shadow:0 0 0 3px var(--soft) inset;background:#fff1e6}
+  .tile.done{border-color:var(--good);background:var(--good-soft);cursor:default;opacity:.8}
+  .tile.wrong{border-color:var(--bad);background:var(--bad-soft);animation:shake .35s}
+  @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+  /* Typing */
+  .type-in{display:flex;gap:10px;flex-wrap:wrap}
+  .type-in input{flex:1;min-width:200px;font:inherit;font-size:1.15rem;padding:10px 14px;border:2px solid var(--line);border-radius:12px}
+  .type-in input:focus{outline:none;border-color:var(--c)}
+  .accents{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .accents button{border:2px solid var(--line);background:var(--soft);border-radius:8px;font:inherit;font-weight:800;width:38px;height:36px;cursor:pointer;color:var(--ink)}
+  .letters{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0 14px}
+  .letter{width:40px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:10px;font-family:'Baloo 2';font-size:1.5rem;font-weight:800;text-transform:uppercase;color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+  .letter:nth-child(4n+1){background:#ec4899}.letter:nth-child(4n+2){background:#ef4444}.letter:nth-child(4n+3){background:#f97316}.letter:nth-child(4n){background:#eab308}
+  .gap{width:18px}
+  .s-fuchsia{--c:#c026d3;--soft:#fae8ff}
+  .s-amber{--c:#f97316;--soft:#ffedd5}
+  /* Crossword */
+  .xwrap{overflow-x:auto;padding:4px 0 10px;display:flex;justify-content:center}
+  .xgrid{display:grid;gap:2px}
+  .xc{position:relative;background:#fff;border:2px solid #f0abfc;border-radius:5px}
+  .xc.empty{background:transparent;border:none}
+  .xc input{width:100%;height:100%;border:none;background:transparent;text-align:center;font:inherit;font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--ink);padding:0;border-radius:4px;caret-color:var(--c)}
+  .xc input:focus{outline:none}
+  .xc.hl{background:var(--soft)}
+  .xc.cur{border-color:var(--c);box-shadow:0 0 0 2px var(--c)}
+  .xc.ok{background:var(--good-soft);border-color:#86efac}
+  .xc.bad{background:var(--bad-soft);border-color:#fca5a5}
+  .xc.bad input{color:var(--bad)}
+  .xn{position:absolute;top:0;left:2px;font-size:.6rem;font-weight:800;color:var(--muted);pointer-events:none}
+  .clues{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .clues h3{margin:0 0 6px;color:var(--c);font-family:'Baloo 2';font-size:1.15rem}
+  .clues ol{list-style:none;margin:0;padding:0}
+  .clue{padding:6px 8px;border-radius:8px;cursor:pointer;font-size:.93rem}
+  .clue:hover{background:#fdf4ff}
+  .clue.act{background:var(--soft)}
+  .clue.ok{color:var(--good)}
+  .clue.bad .mark{color:var(--bad)}
+  .clue .reveal{font-weight:800;color:var(--bad)}
+  @media(max-width:620px){.clues{grid-template-columns:1fr}}
+  /* Contrarreloj */
+  .clock-big{font-family:'Baloo 2';font-size:3.4rem;font-weight:800;color:var(--c)}
+  .tf-card{background:linear-gradient(135deg,#ffedd5,#fef9c3);border:3px solid #fdba74;border-radius:var(--radius);padding:22px;text-align:center;margin:4px 0 10px}
+  .tf-term{font-family:'Baloo 2';font-size:2.1rem;font-weight:800;line-height:1.1}
+  .tf-def{font-size:1.2rem;font-weight:700;margin-top:10px}
+  .btn.tf{font-size:1.25rem;padding:14px 34px;min-width:140px}
+  .btn.tf.yes{background:#16a34a}
+  .btn.tf.no{background:#dc2626}
+  .hintline{font-family:monospace;font-size:1.4rem;letter-spacing:.2em;margin-bottom:12px;text-align:center}
+
+  /* Round results */
+  .score-big{font-family:'Baloo 2';font-size:3rem;font-weight:800;color:var(--c);margin:0;line-height:1.1}
+  .review{margin-top:14px;text-align:left;background:var(--soft);border-radius:12px;padding:12px 16px}
+  .review ul{margin:6px 0 0;padding-left:20px}
+  .review li{margin-bottom:4px}
+
+  /* Summary */
+  .sum-table{width:100%;border-collapse:collapse;margin-top:10px}
+  .sum-table th,.sum-table td{padding:10px;border-bottom:2px solid var(--line);text-align:left}
+  .sum-table th{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:middle}
+  textarea.report{width:100%;min-height:250px;font-family:ui-monospace,monospace;font-size:.9rem;padding:12px;border:2px dashed var(--line);border-radius:12px;background:#fffdfb;color:var(--ink);margin-top:12px}
+  .notice{background:var(--yellow-soft);color:var(--warn);font-weight:700;border-radius:12px;padding:10px 14px;margin-top:12px}
+  @media (max-width:600px){
+    .match{grid-template-columns:1fr 1.3fr}
+    .tile{font-size:.85rem;padding:8px}
+    .face .big{font-size:1.7rem}
+    .card{padding:16px}
+    .badge{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>Vocabulario: Las actividades comerciales</h1>
+    <p>Completa los pasos en orden. Los pasos 2 a 6 son obligatorios; los pasos 1 y 7 son opcionales. ¡Buena suerte! 🍒</p>
+  </header>
+
+  <!-- Student info -->
+  <section class="card step s-pink">
+    <div class="step-head"><div class="num">✎</div><div><h2>Tus datos</h2><div class="sub">Escribe tu información antes de empezar.</div></div></div>
+    <div class="info">
+      <div class="full"><label for="nombre">Nombre</label><input id="nombre" placeholder="Nombre y apellido" autocomplete="name"></div>
+      <div><label for="clase">Clase</label><input id="clase" placeholder="Ej.: Período 3"></div>
+      <div><label for="fecha">Fecha</label><input id="fecha" type="date"></div>
+    </div>
+    <div class="label">Secciones del vocabulario que vas a practicar</div>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <div class="connector"></div>
+  <section class="card step s-pink" id="act-tarjetas"></section>
+  <div class="connector"></div>
+  <section class="card step s-red" id="act-opcion"></section>
+  <div class="connector"></div>
+  <section class="card step s-orange" id="act-emparejar"></section>
+  <div class="connector"></div>
+  <section class="card step s-yellow" id="act-escribir"></section>
+  <div class="connector"></div>
+  <section class="card step s-rose" id="act-revueltas"></section>
+  <div class="connector"></div>
+  <section class="card step s-fuchsia" id="act-crucigrama"></section>
+  <div class="connector"></div>
+  <section class="card step s-amber" id="act-contrarreloj"></section>
+  <div class="connector"></div>
+  <section class="card step s-red" id="summary" style="border-top-color:transparent;border-image:linear-gradient(90deg,#ec4899,#ef4444,#f97316,#facc15) 1;border-top-width:8px;border-top-style:solid"></section>
+</div>
+
+<script>
+const SECTIONS = [
+  "Fase I | Palabras clave",
+  "Fase I | Palabras interdisciplinarias",
+  "Perfil de la región | Palabras clave",
+  "Perfil de la región | Palabras interdisciplinarias",
+  "Fase III | Palabras clave"
+];
+const RAW = [
+ [0,"apelaciones","s. f.","formas de recurrir"],
+ [0,"atributos","s. m.","cualidades; características"],
+ [0,"clasistas","adj.","que discriminan por razón de la clase social"],
+ [0,"consumismo","s. m.","tendencia a comprar productos aunque no sean necesarios"],
+ [0,"difusión","s. f.","comunicación; propagación"],
+ [0,"invención","s. f.","desarrollo o creación"],
+ [0,"logotipo","s. m.","representación con palabras, iniciales y/o símbolos del nombre de una compañía o marca"],
+ [0,"potenciales","adj.","posibles; probables"],
+ [0,"pregonen","v.","anuncien en voz alta la mercancía para venderla"],
+ [0,"sector","s. m.","parte de un grupo"],
+ [0,"sexistas","adj.","que discriminan por razón del sexo"],
+ [0,"solidaridad","s. f.","apoyo a la causa o el ideal de otras personas"],
+ [1,"anuncios","s. m.","propaganda o publicidad"],
+ [1,"competencia","s. f.","grupo de compañías o personas que venden los mismos productos"],
+ [1,"consumidor","s. m.","persona que compra y consume los productos que se venden"],
+ [1,"datos demográficos","fr.","hechos y estadísticas recopilados sobre grupos de personas para referencia o análisis"],
+ [1,"eslogan","s. m.","frase breve con fines publicitarios"],
+ [1,"folletos","s. m.","impresos de pocas hojas que se usan, por lo general, para informar de algo"],
+ [1,"grupos focales","s. m.","pequeños grupos de consumidores que dan su opinión sobre un producto"],
+ [1,"mercado","s. m.","conjunto de posibles compradores de un producto o servicio"],
+ [1,"público objetivo","s. m.","público al que se dirige la publicidad; posibles clientes"],
+ [1,"vallas publicitarias","s. f.","carteleras que se colocan en las calles, carreteras o autopistas con el fin de anunciar algo"],
+ [2,"adversamente","adv.","de manera desfavorable"],
+ [2,"adyacentes","adj.","al lado; situados cerca"],
+ [2,"consolidar","v.","unir y dar solidez"],
+ [2,"debilitado","adj. m.","que ha perdido fuerza"],
+ [2,"disputas","s. f.","discusiones; peleas"],
+ [2,"favorecían","v.","beneficiaban, apoyaban"],
+ [2,"muelles","s. m.","construcciones en la orilla del mar o en un río navegable donde los barcos pueden atracar y zarpar"],
+ [2,"pericia","s. f.","habilidad; sabiduría"],
+ [2,"vasto","adj. m.","extenso; muy grande"],
+ [3,"cálido","adj. m.","de temperaturas altas"],
+ [3,"caudalosos","adj. m.","de mucho volumen de agua"],
+ [3,"escarpadas","adj. f.","abruptas; de mucha pendiente"],
+ [3,"impuestos","s. m.","dinero que se paga al gobierno para que este mantenga los servicios públicos"],
+ [3,"mercaderes","s. m.","personas que compran y venden productos como forma de vida"],
+ [3,"monopolio","s. m.","control comercial de un producto de forma exclusiva"],
+ [3,"sierra","s. f.","cordillera o cadena de montañas"],
+ [3,"templado","adj. m.","sin calores ni fríos extremos"],
+ [3,"yacimientos","s. m.","sitios donde se encuentran minerales, rocas, fósiles o restos arqueológicos"],
+ [4,"bienes de producción","s. m.","recursos utilizados para producir bienes de consumo"],
+ [4,"chalet","s. m.","vivienda que corresponde a una sola familia"],
+ [4,"consumo","s. m.","uso de bienes o servicios para satisfacer necesidades o deseos"],
+ [4,"frenético","adj.","agitado, energético"],
+ [4,"necesidades","s. f.","requerimientos básicos de una persona para vivir"],
+ [4,"ostentosamente","adv.","hecho de manera llamativa"],
+ [4,"propaganda","s. f.","difusión de información o ideas de manera persuasiva"],
+ [4,"salario","s. m.","dinero percibido por trabajar"]
+];
+const WORDS = RAW.map((r,i)=>({id:i,sec:r[0],term:r[1],pos:r[2],def:r[3]}));
+const ROUND = 10;
+
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const clean = s => s.toLowerCase().trim().replace(/\s+/g," ");
+const noAccents = s => clean(s).normalize("NFD").replace(/[̀-ͯ]/g,"");
+let selected = new Set([0,1,2,3,4]);
+const pool = () => WORDS.filter(w=>selected.has(w.sec));
+function distractors(word, n, key){
+  let src = pool().filter(w=>w.id!==word.id);
+  if(src.length < n) src = WORDS.filter(w=>w.id!==word.id);
+  const seen = new Set([word[key]]), out = [];
+  for(const w of shuffle(src)){ if(!seen.has(w[key])){ seen.add(w[key]); out.push(w);} if(out.length===n) break; }
+  return out;
+}
+const STEP_KEY={2:"opcion",3:"emparejar",4:"escribir",5:"revueltas",6:"crucigrama"};
+function head(n, title, sub, badge){
+  let tag="";
+  if(n===1||n===7) tag=`<span class="tag opt">Opcional</span>`;
+  else if(STEP_KEY[n]) tag = (typeof RES!=="undefined"&&RES[STEP_KEY[n]]) ? `<span class="tag done">✓ Completado</span>` : `<span class="tag req">Obligatorio</span>`;
+  return `<div class="step-head"><div class="num">${n}</div><div><h2>${title}${tag}</h2><div class="sub">${sub}</div></div>${badge?`<span class="badge">${badge}</span>`:""}</div>`;
+}
+const store = { get(k){ try{return localStorage.getItem(k);}catch(e){return null;} }, set(k,v){ try{localStorage.setItem(k,v);}catch(e){} } };
+
+/* ---------- results tracking ---------- */
+const ACTS = [
+  {key:"opcion", name:"Paso 2 · Opción múltiple", color:"#dc2626", req:true},
+  {key:"emparejar", name:"Paso 3 · Emparejar", color:"#ea580c", req:true},
+  {key:"escribir", name:"Paso 4 · Escribir", color:"#ca8a04", req:true},
+  {key:"revueltas", name:"Paso 5 · Letras revueltas", color:"#e11d48", req:true},
+  {key:"crucigrama", name:"Paso 6 · Crucigrama", color:"#c026d3", req:true},
+  {key:"contrarreloj", name:"Paso 7 · Contrarreloj (opcional)", color:"#f97316", req:false}
+];
+const RES = {}; // key -> {last:{score,total}, best:{score,total}, rounds}
+let flashSeen = new Set();
+function record(key, score, total, byCount){
+  const r = RES[key] || {rounds:0};
+  r.rounds++; r.last={score,total};
+  if(!r.best || (byCount ? score > r.best.score : score/total > r.best.score/r.best.total)) r.best={score,total};
+  RES[key]=r; renderSummary();
+}
+function roundResult(el, score, total, missed, again, retry, extra){
+  const pct = Math.round(score/total*100);
+  const msg = pct===100?"¡Perfecto! 🎉":pct>=80?"¡Muy bien! 🌟":pct>=60?"¡Buen trabajo! Sigue practicando.":"Sigue practicando. ¡Tú puedes! 💪";
+  el.innerHTML = `<div class="center" style="margin-top:12px">
+    <div class="score-big">${score} / ${total}</div>
+    <div style="font-weight:800">${msg}</div>${extra||""}
+    ${missed.length?`<div class="review"><b>Palabras para repasar:</b><ul>${missed.map(w=>`<li><b>${esc(w.term)}</b> <span class="pos">(${esc(w.pos)})</span>: ${esc(w.def)}</li>`).join("")}</ul></div>`:""}
+    <div class="row" style="justify-content:center;margin-top:16px">
+      <button class="btn" data-a="again">Otra ronda</button>
+      ${missed.length&&retry?`<button class="btn ghost" data-a="retry">Practicar solo las que fallé</button>`:""}
+    </div></div>`;
+  el.querySelector('[data-a="again"]').onclick=()=>again();
+  const r=el.querySelector('[data-a="retry"]'); if(r) r.onclick=()=>retry(missed);
+}
+
+/* ---------- Paso 1: Tarjetas ---------- */
+const Flash = (()=>{
+  const el=$("act-tarjetas"); let S;
+  function start(){ S={order:shuffle(pool()), i:0, flipped:false, front:(S&&S.front)||"term"}; draw(); }
+  function draw(){
+    const w=S.order[S.i]; flashSeen.add(w.id);
+    const termSide = `<div class="big">${esc(w.term)}</div><div class="pos">(${esc(w.pos)})</div>`;
+    const defSide = `<div class="def">${esc(w.def)}</div><div class="pos" style="margin-top:6px">(${esc(w.pos)})</div>`;
+    el.innerHTML = head(1,"Tarjetas","Repasa las palabras. Haz clic en la tarjeta para voltearla.",`${S.i+1} / ${S.order.length}`) + `
+      <div class="topline"><span>Tarjeta ${S.i+1} de ${S.order.length}</span>
+        <span class="seg"><button data-f="term" class="${S.front==='term'?'on':''}">Ver palabra</button><button data-f="def" class="${S.front==='def'?'on':''}">Ver definición</button></span></div>
+      <div class="flash ${S.flipped?'flipped':''}" tabindex="0" id="card"><div class="flash-inner">
+        <div class="face front">${S.front==='term'?termSide:defSide}<div class="hint">Haz clic para voltear</div></div>
+        <div class="face back">${S.front==='term'?defSide:termSide}</div>
+      </div></div>
+      <div class="row" style="justify-content:center">
+        <button class="btn ghost" data-a="prev" ${S.i===0?'disabled':''}>← Anterior</button>
+        <button class="btn" data-a="flip">Voltear</button>
+        <button class="btn ghost" data-a="next" ${S.i===S.order.length-1?'disabled':''}>Siguiente →</button>
+        <button class="btn ghost" data-a="mix">🔀 Mezclar</button>
+      </div>`;
+    const card=el.querySelector("#card");
+    const flip=()=>{S.flipped=!S.flipped; card.classList.toggle("flipped",S.flipped);};
+    card.onclick=flip;
+    card.onkeydown=e=>{ if(e.key===" "||e.key==="Enter"){e.preventDefault();flip();} if(e.key==="ArrowRight")go(1); if(e.key==="ArrowLeft")go(-1); };
+    const go=d=>{ const n=S.i+d; if(n>=0&&n<S.order.length){S.i=n;S.flipped=false;draw();el.querySelector("#card").focus({preventScroll:true});} };
+    el.querySelector('[data-a="flip"]').onclick=flip;
+    el.querySelector('[data-a="prev"]').onclick=()=>go(-1);
+    el.querySelector('[data-a="next"]').onclick=()=>go(1);
+    el.querySelector('[data-a="mix"]').onclick=()=>{S.order=shuffle(S.order);S.i=0;S.flipped=false;draw();};
+    el.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{S.front=b.dataset.f;S.flipped=false;draw();});
+    renderSummary();
+  }
+  return {start};
+})();
+
+/* ---------- Paso 2: Opción múltiple ---------- */
+const MC = (()=>{
+  const el=$("act-opcion"); let S={dir:"def2term"};
+  function start(list){
+    const dir=S.dir;
+    const words = list&&list.length ? shuffle(list) : shuffle(pool()).slice(0,ROUND);
+    S={dir, qs:words.map(w=>({w, opts:shuffle([w,...distractors(w,3,dir==="def2term"?"term":"def")])})), i:0, score:0, missed:[], answered:false};
+    draw();
+  }
+  function draw(){
+    const done=S.i>=S.qs.length;
+    const d2t=S.dir==="def2term";
+    el.innerHTML = head(2,"Opción múltiple","Elige la respuesta correcta.", done?"¡Terminado!":`Puntos: ${S.score}`) +
+      `<div class="topline"><span>${done?"Resultados":`Pregunta ${S.i+1} de ${S.qs.length}`}</span>
+        <span class="seg"><button data-d="def2term" class="${d2t?'on':''}">Definición → palabra</button><button data-d="term2def" class="${!d2t?'on':''}">Palabra → definición</button></span></div>
+      <div class="progress"><div style="width:${Math.min(S.i,S.qs.length)/S.qs.length*100}%"></div></div><div id="mc-body"></div>`;
+    el.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{ if(b.dataset.d!==S.dir){S.dir=b.dataset.d; start();} });
+    const body=el.querySelector("#mc-body");
+    if(done){ roundResult(body,S.score,S.qs.length,S.missed,()=>start(),l=>start(l)); return; }
+    const q=S.qs[S.i];
+    body.innerHTML = `<div class="muted" style="font-weight:700">${d2t?"¿Qué palabra corresponde a esta definición?":"¿Qué significa esta palabra?"}</div>
+      <div class="prompt">${d2t?`“${esc(q.w.def)}” <span class="pos">(${esc(q.w.pos)})</span>`:`${esc(q.w.term)} <span class="pos">(${esc(q.w.pos)})</span>`}</div>
+      <div class="opts">${q.opts.map((o,k)=>`<button class="opt" data-k="${k}"><b>${"ABCD"[k]}.</b> ${esc(d2t?o.term:o.def)}</button>`).join("")}</div>
+      <div class="fb"></div>`;
+    body.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+      if(S.answered) return; S.answered=true;
+      const pick=q.opts[+b.dataset.k], ok=pick.id===q.w.id;
+      body.querySelectorAll(".opt").forEach((x,k)=>{x.disabled=true; if(q.opts[k].id===q.w.id) x.classList.add("good");});
+      if(ok) S.score++; else { b.classList.add("bad"); S.missed.push(q.w); }
+      const last=S.i===S.qs.length-1;
+      body.querySelector(".fb").innerHTML = `<div class="feedback ${ok?'good':'bad'}">${ok?"✅ ¡Correcto!":"❌ Incorrecto. La respuesta correcta es:"} <b>${esc(q.w.term)}</b>: ${esc(q.w.def)}</div>
+        <div class="row" style="margin-top:12px"><button class="btn" data-a="nx">${last?"Ver resultados":"Siguiente →"}</button></div>`;
+      el.querySelector(".badge").textContent=`Puntos: ${S.score}`;
+      body.querySelector('[data-a="nx"]').onclick=()=>{
+        S.i++; S.answered=false;
+        if(S.i>=S.qs.length) record("opcion",S.score,S.qs.length);
+        draw();
+      };
+    });
+  }
+  return {start};
+})();
+
+/* ---------- Paso 3: Emparejar ---------- */
+const Match = (()=>{
+  const el=$("act-emparejar"); let S;
+  function start(){
+    const words=shuffle(pool()).slice(0,10);
+    S={words, left:shuffle(words), right:shuffle(words), selL:null, selR:null, done:new Set(), missedIds:new Set(), tries:0, t0:null, msg:""};
+    draw();
+  }
+  function draw(){
+    const all=S.done.size===S.words.length;
+    el.innerHTML = head(3,"Emparejar","Haz clic en una palabra y luego en su definición.",`Parejas: ${S.done.size} / ${S.words.length}`) + `
+      <div class="topline"><span>Intentos: ${S.tries}</span><span>Errores: ${S.tries-S.done.size}</span></div>
+      <div class="progress"><div style="width:${S.done.size/S.words.length*100}%"></div></div>
+      <div class="match">
+        <div class="col">${S.left.map(w=>`<button class="tile term ${S.done.has(w.id)?'done':''} ${S.selL===w.id?'sel':''}" data-l="${w.id}">${esc(w.term)}</button>`).join("")}</div>
+        <div class="col">${S.right.map(w=>`<button class="tile ${S.done.has(w.id)?'done':''} ${S.selR===w.id?'sel':''}" data-r="${w.id}">${esc(w.def)}</button>`).join("")}</div>
+      </div>
+      <div class="fb">${S.msg}</div>
+      <div class="end"></div>`;
+    if(all){
+      const score=S.words.length-S.missedIds.size;
+      const secs=Math.round((Date.now()-S.t0)/1000);
+      roundResult(el.querySelector(".end"),score,S.words.length,S.words.filter(w=>S.missedIds.has(w.id)),start,null,
+        `<div class="muted" style="margin-top:4px">Parejas correctas al primer intento · ${S.tries} intentos · ${secs} segundos</div>`);
+      return;
+    }
+    el.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{ const id=+b.dataset.l; if(S.done.has(id))return; S.selL=S.selL===id?null:id; check(); });
+    el.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{ const id=+b.dataset.r; if(S.done.has(id))return; S.selR=S.selR===id?null:id; check(); });
+  }
+  function check(){
+    if(!S.t0) S.t0=Date.now();
+    if(S.selL===null||S.selR===null){ draw(); return; }
+    S.tries++;
+    const L=WORDS[S.selL];
+    if(S.selL===S.selR){
+      S.done.add(S.selL);
+      S.msg=`<div class="feedback good">✅ ¡Correcto! <b>${esc(L.term)}</b>: ${esc(L.def)}</div>`;
+      S.selL=S.selR=null;
+      if(S.done.size===S.words.length) record("emparejar",S.words.length-S.missedIds.size,S.words.length);
+      draw();
+    } else {
+      S.missedIds.add(S.selL); S.missedIds.add(S.selR);
+      S.msg=`<div class="feedback bad">❌ No es correcto. <b>${esc(L.term)}</b> significa: “${esc(L.def)}”. ¡Búscala en la lista!</div>`;
+      const l=S.selL, r=S.selR; S.selL=S.selR=null; draw();
+      el.querySelector(`[data-l="${l}"]`).classList.add("wrong");
+      el.querySelector(`[data-r="${r}"]`).classList.add("wrong");
+    }
+  }
+  return {start};
+})();
+
+/* ---------- Pasos 4 y 5: Escribir / Letras revueltas ---------- */
+function scramble(term){
+  return term.split(" ").map(word=>{
+    if(word.length<2) return word;
+    let s=word, t=0; while(s===word&&t<25){ s=shuffle([...word]).join(""); t++; } return s;
+  }).join(" ");
+}
+function Typed(key, elId, n, title, sub, isScramble){
+  const el=$(elId); let S;
+  function start(list){
+    const words = list&&list.length ? shuffle(list) : shuffle(pool()).slice(0,ROUND);
+    S={qs:words.map(w=>({w, scr:scramble(w.term)})), i:0, score:0, missed:[], answered:false, hint:0, touched:false};
+    draw();
+  }
+  function draw(keep){
+    const done=S.i>=S.qs.length;
+    el.innerHTML = head(n,title,sub, done?"¡Terminado!":`Puntos: ${S.score}`) +
+      `<div class="topline"><span>${done?"Resultados":`${S.i+1} de ${S.qs.length}`}</span></div>
+       <div class="progress"><div style="width:${Math.min(S.i,S.qs.length)/S.qs.length*100}%"></div></div><div class="body"></div>`;
+    const body=el.querySelector(".body");
+    if(done){ roundResult(body,S.score,S.qs.length,S.missed,()=>start(),l=>start(l)); return; }
+    const q=S.qs[S.i], w=q.w;
+    const hintText = S.hint? w.term.slice(0,S.hint) + w.term.slice(S.hint).replace(/[^ ]/g,"_") : "";
+    const tiles = q.scr.split("").map(c=>c===" "?`<span class="gap"></span>`:`<span class="letter">${esc(c)}</span>`).join("");
+    body.innerHTML = (isScramble
+        ? `<div class="letters">${tiles}</div><div class="muted center" style="margin-bottom:14px"><b>Pista:</b> ${esc(w.def)} <span class="pos">(${esc(w.pos)})</span></div>`
+        : `<div class="muted" style="font-weight:700">Escribe la palabra que corresponde a esta definición:</div>
+           <div class="prompt">“${esc(w.def)}” <span class="pos">(${esc(w.pos)})</span></div>`) +
+      (S.hint?`<div class="hintline">${esc(hintText)}</div>`:"") + `
+      <form class="type-in" autocomplete="off">
+        <input placeholder="Tu respuesta…" autocapitalize="off" spellcheck="false" aria-label="Tu respuesta">
+        <button class="btn" type="submit" data-a="go">Comprobar</button>
+        <button class="btn ghost" type="button" data-a="hint">💡 Pista</button>
+      </form>
+      <div class="accents">${["á","é","í","ó","ú","ñ","ü"].map(c=>`<button type="button" data-c="${c}">${c}</button>`).join("")}</div>
+      <div class="fb"></div>`;
+    const input=body.querySelector("input");
+    if(keep!==undefined) input.value=keep;
+    if(S.touched) input.focus({preventScroll:true});
+    input.addEventListener("focus",()=>S.touched=true);
+    body.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{
+      const p=input.selectionStart??input.value.length;
+      input.value=input.value.slice(0,p)+b.dataset.c+input.value.slice(input.selectionEnd??p);
+      input.focus(); input.setSelectionRange(p+1,p+1);
+    });
+    body.querySelector('[data-a="hint"]').onclick=()=>{ if(S.answered)return; S.touched=true; S.hint=Math.min(S.hint+1,w.term.length-1); draw(input.value); };
+    body.querySelector("form").onsubmit=e=>{
+      e.preventDefault(); S.touched=true;
+      if(S.answered){ S.i++; S.answered=false; S.hint=0; if(S.i>=S.qs.length) record(key,S.score,S.qs.length); draw(); return; }
+      const a=input.value; if(!a.trim()) return;
+      S.answered=true;
+      let cls,msg;
+      if(clean(a)===clean(w.term)){ cls="good"; msg=`✅ ¡Correcto! <b>${esc(w.term)}</b>`; S.score++; }
+      else if(noAccents(a)===noAccents(w.term)){ cls="warn"; msg=`⚠️ ¡Casi! Ojo con los acentos. Se escribe <b>${esc(w.term)}</b>.`; S.score++; }
+      else { cls="bad"; msg=`❌ Incorrecto. Escribiste “${esc(a.trim())}”. La respuesta correcta es <b>${esc(w.term)}</b>.`; S.missed.push(w); }
+      input.disabled=true; body.querySelector('[data-a="hint"]').disabled=true;
+      const go=body.querySelector('[data-a="go"]'); go.textContent=S.i===S.qs.length-1?"Ver resultados":"Siguiente →";
+      body.querySelector(".fb").innerHTML=`<div class="feedback ${cls}">${msg}</div>`;
+      el.querySelector(".badge").textContent=`Puntos: ${S.score}`;
+      go.focus({preventScroll:true});
+    };
+  }
+  return {start};
+}
+const Write = Typed("escribir","act-escribir",4,"Escribir","Lee la definición y escribe la palabra.",false);
+const Scr = Typed("revueltas","act-revueltas",5,"Letras revueltas","Ordena las letras para formar la palabra.",true);
+
+/* ---------- Paso 6: Crucigrama ---------- */
+const letterNorm = s => s.toUpperCase().replace(/Ñ/g,"\u0001").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\u0001/g,"Ñ");
+function layoutCrossword(words, maxSize){
+  let best=null;
+  for(let attempt=0; attempt<40; attempt++){
+    const items = shuffle(words).map(w=>({w, ans:letterNorm(w.term).replace(/ /g,"")}))
+      .sort((a,b)=>b.ans.length-a.ans.length + (Math.random()-.5)*3);
+    const cells=new Map(); // "r,c" -> {ch, dirs:Set}
+    const placed=[];
+    const get=(r,c)=>cells.get(r+","+c);
+    let minR=0,maxR=0,minC=0,maxC=0;
+    const put=(it,r,c,dir)=>{
+      for(let i=0;i<it.ans.length;i++){
+        const rr=dir==="v"?r+i:r, cc=dir==="h"?c+i:c, k=rr+","+cc;
+        const cell=cells.get(k)||{ch:it.ans[i],dirs:new Set()}; cell.dirs.add(dir); cells.set(k,cell);
+        minR=Math.min(minR,rr);maxR=Math.max(maxR,rr);minC=Math.min(minC,cc);maxC=Math.max(maxC,cc);
+      }
+      placed.push({...it,r,c,dir});
+    };
+    const fits=(it,r,c,dir)=>{
+      const dr=dir==="v"?1:0, dc=dir==="h"?1:0, L=it.ans.length;
+      if(get(r-dr,c-dc)||get(r+dr*L,c+dc*L)) return -1;
+      let inter=0;
+      for(let i=0;i<L;i++){
+        const rr=r+dr*i, cc=c+dc*i, cell=get(rr,cc);
+        if(cell){ if(cell.ch!==it.ans[i]||cell.dirs.has(dir)) return -1; inter++; }
+        else if(get(rr+dc,cc+dr)||get(rr-dc,cc-dr)) return -1;
+      }
+      if(inter===0||inter===L) return -1;
+      const nMinR=Math.min(minR,r), nMaxR=Math.max(maxR,r+dr*(L-1)), nMinC=Math.min(minC,c), nMaxC=Math.max(maxC,c+dc*(L-1));
+      if(nMaxR-nMinR+1>maxSize||nMaxC-nMinC+1>maxSize) return -1;
+      return inter;
+    };
+    const pending=[...items];
+    put(pending.shift(),0,0,"h");
+    let progress=true;
+    while(pending.length&&progress){
+      progress=false;
+      for(let p=0;p<pending.length;p++){
+        const it=pending[p]; const cands=[];
+        for(const [k,cell] of cells){
+          const [r0,c0]=k.split(",").map(Number);
+          for(let i=0;i<it.ans.length;i++){
+            if(it.ans[i]!==cell.ch) continue;
+            for(const dir of ["h","v"]){
+              if(cell.dirs.has(dir)) continue;
+              const r=dir==="v"?r0-i:r0, c=dir==="h"?c0-i:c0;
+              const sc=fits(it,r,c,dir); if(sc>0) cands.push({r,c,dir,sc:sc+Math.random()});
+            }
+          }
+        }
+        if(cands.length){ cands.sort((a,b)=>b.sc-a.sc); const b=cands[0]; put(it,b.r,b.c,b.dir); pending.splice(p,1); p--; progress=true; }
+      }
+    }
+    const area=(maxR-minR+1)*(maxC-minC+1);
+    const score=placed.length*1000-area;
+    if(!best||score>best.score) best={score,placed:placed.map(p=>({...p,r:p.r-minR,c:p.c-minC})),rows:maxR-minR+1,cols:maxC-minC+1};
+    if(placed.length===words.length&&attempt>10) break;
+  }
+  // numbering
+  const starts=[...new Set(best.placed.map(p=>p.r+","+p.c))].map(k=>k.split(",").map(Number)).sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
+  const numAt=new Map(); starts.forEach(([r,c],i)=>numAt.set(r+","+c,i+1));
+  best.placed.forEach(p=>p.num=numAt.get(p.r+","+p.c));
+  best.numAt=numAt;
+  return best;
+}
+const Cross = (()=>{
+  const el=$("act-crucigrama"); let S;
+  function start(){
+    const fitsGrid=w=>letterNorm(w.term).replace(/ /g,"").length<=14;
+    let src=shuffle(pool().filter(fitsGrid)).slice(0,12);
+    if(src.length<4) src=shuffle(WORDS.filter(fitsGrid)).slice(0,12);
+    const L=layoutCrossword(src,15);
+    const grid={}; // key -> {ans, words:[idx]}
+    L.placed.forEach((p,idx)=>{ for(let i=0;i<p.ans.length;i++){ const r=p.dir==="v"?p.r+i:p.r, c=p.dir==="h"?p.c+i:p.c, k=r+","+c; (grid[k]=grid[k]||{ans:p.ans[i],words:[]}).words.push(idx); } });
+    S={L, grid, val:{}, dir:"h", cur:null, status:L.placed.map(()=>null), finished:false};
+    draw();
+  }
+  function wordCells(p){ return [...Array(p.ans.length)].map((_,i)=>p.dir==="v"?(p.r+i)+","+p.c:p.r+","+(p.c+i)); }
+  function activeWord(){
+    if(!S.cur) return -1; const g=S.grid[S.cur];
+    return g.words.find(i=>S.L.placed[i].dir===S.dir) ?? g.words[0];
+  }
+  function draw(){
+    const {L}=S, size=Math.max(26,Math.min(38,Math.floor((Math.min(window.innerWidth,860)-60)/L.cols)));
+    const correct=S.status.filter(x=>x==="ok").length;
+    const across=L.placed.map((p,i)=>({...p,i})).filter(p=>p.dir==="h").sort((a,b)=>a.num-b.num);
+    const down=L.placed.map((p,i)=>({...p,i})).filter(p=>p.dir==="v").sort((a,b)=>a.num-b.num);
+    const clue=p=>`<li data-w="${p.i}" class="clue ${S.status[p.i]||''}"><b>${p.num}.</b> ${esc(p.w.def)} <span class="pos">(${esc(p.w.pos)}${p.w.term.includes(" ")?", "+p.w.term.split(" ").length+" palabras":""})</span> <span class="mark">${S.status[p.i]==="ok"?"✅":S.status[p.i]==="bad"?"❌":""}</span>${S.finished&&S.status[p.i]!=="ok"?` <span class="reveal">→ ${esc(p.w.term)}</span>`:""}</li>`;
+    let cellsHtml="";
+    for(let r=0;r<L.rows;r++) for(let c=0;c<L.cols;c++){
+      const k=r+","+c, g=S.grid[k];
+      if(!g){ cellsHtml+=`<div class="xc empty"></div>`; continue; }
+      const n=L.numAt.get(k);
+      const ok=g.words.some(i=>S.status[i]==="ok");
+      const wrongCell=S.finished&&letterNorm(S.val[k]||"")!==g.ans;
+      cellsHtml+=`<div class="xc ${ok?'ok':''} ${wrongCell?'bad':''}" data-k="${k}">${n?`<span class="xn">${n}</span>`:""}<input maxlength="2" data-k="${k}" value="${esc(S.finished?g.ans:(S.val[k]||""))}" ${S.finished?"disabled":""} aria-label="Casilla ${n||''}" autocomplete="off" autocapitalize="characters" spellcheck="false"></div>`;
+    }
+    el.innerHTML = head(6,"Crucigrama","Escribe las palabras en el crucigrama. Los acentos no importan aquí.",`Palabras: ${correct} / ${L.placed.length}`) + `
+      <div class="progress"><div style="width:${correct/L.placed.length*100}%"></div></div>
+      <div class="xwrap"><div class="xgrid" style="grid-template-columns:repeat(${L.cols},${size}px);grid-auto-rows:${size}px">${cellsHtml}</div></div>
+      <div class="clues">
+        <div><h3>Horizontales →</h3><ol>${across.map(clue).join("")}</ol></div>
+        <div><h3>Verticales ↓</h3><ol>${down.map(clue).join("")}</ol></div>
+      </div>
+      <div class="fb"></div>
+      <div class="row" style="justify-content:center;margin-top:14px">
+        ${S.finished?`<button class="btn" data-a="new">Nuevo crucigrama</button>`:`<button class="btn" data-a="done">Terminar y ver respuestas</button><button class="btn ghost" data-a="new">Nuevo crucigrama</button>`}
+      </div><div class="end"></div>`;
+    el.querySelector('[data-a="new"]').onclick=start;
+    const doneBtn=el.querySelector('[data-a="done"]'); if(doneBtn) doneBtn.onclick=finish;
+    if(S.finished){
+      const missed=L.placed.filter((p,i)=>S.status[i]!=="ok").map(p=>p.w);
+      roundResult(el.querySelector(".end"),correct,L.placed.length,missed,start,null);
+      el.querySelector(".end .row")?.remove();
+      return;
+    }
+    highlight();
+    el.querySelectorAll(".xc input").forEach(inp=>{
+      inp.addEventListener("mousedown",()=>{ if(S.cur===inp.dataset.k){ const g=S.grid[S.cur]; if(g.words.length>1){ S.dir=S.dir==="h"?"v":"h"; highlight(); } } });
+      inp.addEventListener("focus",()=>{ S.cur=inp.dataset.k; const g=S.grid[S.cur]; if(!g.words.some(i=>L.placed[i].dir===S.dir)) S.dir=L.placed[g.words[0]].dir; highlight(); setTimeout(()=>inp.select(),0); });
+      inp.addEventListener("input",()=>{
+        const ch=letterNorm(inp.value.slice(-1)).replace(/[^A-ZÑ]/g,"");
+        inp.value=ch; S.val[inp.dataset.k]=ch;
+        checkWords(inp.dataset.k);
+        if(ch) move(1);
+      });
+      inp.addEventListener("keydown",e=>{
+        const [r,c]=inp.dataset.k.split(",").map(Number);
+        if(e.key==="Backspace"&&!inp.value){ e.preventDefault(); move(-1,true); }
+        else if(e.key==="ArrowRight"){ e.preventDefault(); S.dir="h"; focusK(r+","+(c+1)); }
+        else if(e.key==="ArrowLeft"){ e.preventDefault(); S.dir="h"; focusK(r+","+(c-1)); }
+        else if(e.key==="ArrowDown"){ e.preventDefault(); S.dir="v"; focusK((r+1)+","+c); }
+        else if(e.key==="ArrowUp"){ e.preventDefault(); S.dir="v"; focusK((r-1)+","+c); }
+      });
+    });
+    el.querySelectorAll(".clue").forEach(li=>li.onclick=()=>{ const p=L.placed[+li.dataset.w]; S.dir=p.dir; focusK(p.r+","+p.c); });
+  }
+  function focusK(k){ const inp=el.querySelector(`input[data-k="${k}"]`); if(inp){ inp.focus({preventScroll:false}); } }
+  function move(d,clear){
+    const wi=activeWord(); if(wi<0) return; const cells=wordCells(S.L.placed[wi]); const pos=cells.indexOf(S.cur)+d;
+    if(pos>=0&&pos<cells.length){ focusK(cells[pos]); if(clear){ const k=cells[pos]; S.val[k]=""; el.querySelector(`input[data-k="${k}"]`).value=""; checkWords(k); } }
+  }
+  function highlight(){
+    el.querySelectorAll(".xc.hl,.xc.cur").forEach(x=>x.classList.remove("hl","cur"));
+    el.querySelectorAll(".clue.act").forEach(x=>x.classList.remove("act"));
+    const wi=activeWord(); if(wi<0) return;
+    wordCells(S.L.placed[wi]).forEach(k=>el.querySelector(`.xc[data-k="${k}"]`)?.classList.add("hl"));
+    el.querySelector(`.xc[data-k="${S.cur}"]`)?.classList.add("cur");
+    el.querySelector(`.clue[data-w="${wi}"]`)?.classList.add("act");
+  }
+  function checkWords(k){
+    let changed=false;
+    S.grid[k].words.forEach(i=>{
+      const p=S.L.placed[i], cells=wordCells(p);
+      const typed=cells.map(c=>S.val[c]||"").join("");
+      const st= typed.length<p.ans.length ? null : (typed===p.ans?"ok":"bad");
+      if(st!==S.status[i]){ S.status[i]=st; changed=true;
+        if(st==="ok") say(`✅ ¡Correcto! <b>${esc(p.w.term)}</b>: ${esc(p.w.def)}`,"good");
+        if(st==="bad") say(`❌ La palabra ${p.num} ${p.dir==="h"?"horizontal":"vertical"} no es correcta. ¡Inténtalo otra vez!`,"bad");
+      }
+    });
+    if(changed) refreshStatus();
+  }
+  function say(m,cls){ el.querySelector(".fb").innerHTML=`<div class="feedback ${cls}">${m}</div>`; }
+  function refreshStatus(){
+    const L=S.L, correct=S.status.filter(x=>x==="ok").length;
+    el.querySelector(".badge").textContent=`Palabras: ${correct} / ${L.placed.length}`;
+    el.querySelector(".progress > div").style.width=`${correct/L.placed.length*100}%`;
+    el.querySelectorAll(".xc[data-k]").forEach(x=>{ const g=S.grid[x.dataset.k]; x.classList.toggle("ok",g.words.some(i=>S.status[i]==="ok")); });
+    el.querySelectorAll(".clue").forEach(li=>{ const st=S.status[+li.dataset.w]; li.classList.toggle("ok",st==="ok"); li.classList.toggle("bad",st==="bad"); li.querySelector(".mark").textContent=st==="ok"?"✅":st==="bad"?"❌":""; });
+    if(correct===L.placed.length) finish();
+  }
+  function finish(){
+    if(S.finished) return; S.finished=true;
+    record("crucigrama",S.status.filter(x=>x==="ok").length,S.L.placed.length);
+    draw();
+  }
+  return {start};
+})();
+
+/* ---------- Paso 7: Contrarreloj ---------- */
+const Clock = (()=>{
+  const el=$("act-contrarreloj"); const SECS=60; let S={best:0}, timer=null;
+  function start(){ stop(); S={best:S.best||0, phase:"ready"}; draw(); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  function nextQ(){
+    const p=pool(); const w=p[Math.floor(Math.random()*p.length)];
+    const match=Math.random()<.5;
+    let shown=w.def;
+    if(!match){ const o=distractors(w,1,"def")[0]; shown=o.def; }
+    S.q={w,shown,match};
+  }
+  function go(){
+    S={best:S.best, phase:"run", end:Date.now()+SECS*1000, score:0, answered:0, missed:[], fb:""};
+    nextQ(); draw();
+    timer=setInterval(()=>{ const left=Math.max(0,S.end-Date.now()); const t=el.querySelector(".clock"); if(t) t.textContent=Math.ceil(left/1000); const bar=el.querySelector(".progress > div"); if(bar) bar.style.width=(left/(SECS*1000)*100)+"%"; if(left<=0) over(); },100);
+  }
+  function over(){
+    stop(); S.phase="over";
+    if(S.answered>0) record("contrarreloj",S.score,S.answered,true);
+    if(S.score>S.best) S.best=S.score;
+    draw();
+  }
+  function answer(yes){
+    if(S.phase!=="run") return;
+    const q=S.q, ok=yes===q.match;
+    S.answered++;
+    if(ok){ S.score++; S.fb=`<div class="feedback good">✅ ¡Correcto! ${q.match?"Sí":"No"}, <b>${esc(q.w.term)}</b> ${q.match?"significa eso.":"no significa eso."}</div>`; }
+    else { if(!S.missed.includes(q.w)) S.missed.push(q.w); S.fb=`<div class="feedback bad">❌ Incorrecto. <b>${esc(q.w.term)}</b> significa: “${esc(q.w.def)}”</div>`; }
+    nextQ(); draw();
+  }
+  function draw(){
+    let body="";
+    if(S.phase==="ready"){
+      body=`<div class="center" style="padding:10px 0">
+        <div class="clock-big">⏱️ ${SECS}</div>
+        <p style="font-weight:700">Verás una palabra y una definición. ¿La definición es correcta?<br>Responde todas las que puedas en ${SECS} segundos.</p>
+        <p class="muted">Usa los botones o el teclado: <b>←</b> = Sí · <b>→</b> = No</p>
+        <button class="btn" data-a="go" style="font-size:1.2rem;padding:14px 30px">¡Empezar!</button>
+        ${S.best?`<p class="muted" style="margin-top:10px">Tu récord: <b>${S.best}</b></p>`:""}</div>`;
+    } else if(S.phase==="run"){
+      const q=S.q;
+      body=`<div class="topline"><span>Correctas: <b>${S.score}</b> · Respondidas: ${S.answered}</span><span>⏱️ <b class="clock">${Math.ceil((S.end-Date.now())/1000)}</b> s</span></div>
+        <div class="progress"><div style="width:${Math.max(0,(S.end-Date.now())/(SECS*1000)*100)}%"></div></div>
+        <div class="tf-card"><div class="tf-term">${esc(q.w.term)}</div><div class="pos">(${esc(q.w.pos)})</div><div class="tf-def">“${esc(q.shown)}”</div></div>
+        <div class="muted center" style="font-weight:700;margin:6px 0 10px">¿Es correcta la definición?</div>
+        <div class="row" style="justify-content:center"><button class="btn tf yes" data-a="yes">✔ Sí</button><button class="btn tf no" data-a="no">✘ No</button></div>
+        <div class="fb">${S.fb}</div>`;
+    } else {
+      body=`<div class="center"><div class="muted" style="font-weight:800;margin-top:8px">⏰ ¡Se acabó el tiempo!</div></div><div class="end"></div>`;
+    }
+    el.innerHTML = head(7,"Contrarreloj","¿Sí o no? Responde lo más rápido que puedas.",S.phase==="run"?`Correctas: ${S.score}`:(S.best?`Récord: ${S.best}`:"")) + body;
+    if(!S.best&&S.phase!=="run") el.querySelector(".badge")?.remove();
+    if(S.phase==="ready") el.querySelector('[data-a="go"]').onclick=go;
+    if(S.phase==="run"){ el.querySelector('[data-a="yes"]').onclick=()=>answer(true); el.querySelector('[data-a="no"]').onclick=()=>answer(false); }
+    if(S.phase==="over"){
+      if(S.answered===0){ el.querySelector(".end").innerHTML=`<div class="center" style="margin-top:12px"><p>No respondiste ninguna. ¡Inténtalo otra vez!</p><button class="btn" data-a="again">Jugar otra vez</button></div>`; el.querySelector('[data-a="again"]').onclick=go; }
+      else roundResult(el.querySelector(".end"),S.score,S.answered,S.missed,go,null,`<div class="muted" style="margin-top:4px">respuestas correctas en ${SECS} segundos${S.score>=S.best?" · 🏆 ¡Nuevo récord!":""}</div>`);
+    }
+  }
+  document.addEventListener("keydown",e=>{
+    if(S.phase!=="run"||e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA") return;
+    if(e.key==="ArrowLeft"){ e.preventDefault(); answer(true); }
+    if(e.key==="ArrowRight"){ e.preventDefault(); answer(false); }
+  });
+  return {start};
+})();
+
+/* ---------- Paso 6: Resumen ---------- */
+function info(){ return {nombre:$("nombre").value.trim(), clase:$("clase").value.trim(), fecha:$("fecha").value}; }
+function fmtDate(d){ if(!d) return ""; const [y,m,dd]=d.split("-"); return `${dd}/${m}/${y}`; }
+function reqPending(){ return ACTS.filter(a=>a.req&&!RES[a.key]); }
+function reportText(){
+  const i=info();
+  const secNames = selected.size===SECTIONS.length ? "Todas" : [...selected].sort().map(s=>SECTIONS[s]).join("; ");
+  const lines = [
+    "VOCABULARIO: LAS ACTIVIDADES COMERCIALES",
+    `Nombre: ${i.nombre||"(sin nombre)"}`,
+    `Clase: ${i.clase||"(sin clase)"}`,
+    `Fecha: ${fmtDate(i.fecha)||"(sin fecha)"}`,
+    `Secciones: ${secNames}`,
+    "",
+    reqPending().length ? `ESTADO: INCOMPLETO. Faltan: ${reqPending().map(a=>a.name).join(", ")}` : "ESTADO: COMPLETO. Todas las actividades obligatorias terminadas.",
+    "",
+    "OBLIGATORIAS"
+  ];
+  const line=a=>{ const r=RES[a.key]; return r ? `${a.name}: último ${r.last.score}/${r.last.total} · mejor ${r.best.score}/${r.best.total} · rondas: ${r.rounds}` : `${a.name}: SIN COMPLETAR`; };
+  ACTS.filter(a=>a.req).forEach(a=>lines.push(line(a)));
+  const done=ACTS.filter(a=>a.req&&RES[a.key]);
+  if(done.length){
+    const s=done.reduce((t,a)=>t+RES[a.key].best.score,0), tot=done.reduce((t,a)=>t+RES[a.key].best.total,0);
+    lines.push(`TOTAL obligatorias (mejores rondas): ${s}/${tot} (${Math.round(s/tot*100)}%)`);
+  }
+  lines.push("", "OPCIONALES", `Paso 1 · Tarjetas: ${flashSeen.size} ${flashSeen.size===1?"tarjeta vista":"tarjetas vistas"}`);
+  ACTS.filter(a=>!a.req).forEach(a=>lines.push(RES[a.key]?line(a):`${a.name}: no lo hizo`));
+  lines.push("");
+  lines.push(`Generado: ${new Date().toLocaleString("es")}`);
+  return lines.join("\n");
+}
+function renderSummary(){
+  const el=$("summary"), i=info();
+  const reqActs=ACTS.filter(a=>a.req), completed=reqActs.filter(a=>RES[a.key]).length, pend=reqPending();
+  const missing=[!i.nombre&&"tu nombre",!i.clase&&"tu clase",!i.fecha&&"la fecha"].filter(Boolean);
+  el.innerHTML = head(8,"Mis resultados","Cuando termines, copia tus resultados y entrégaselos a tu maestro/a.",`${completed} / ${reqActs.length} obligatorios`) + `
+    ${pend.length?`<div class="status pending">⏳ Te faltan ${pend.length} ${pend.length===1?"actividad obligatoria":"actividades obligatorias"}: ${pend.map(a=>esc(a.name.replace(/^Paso \d+ · /,""))).join(", ")}.</div>`
+                 :`<div class="status ok">🎉 ¡Completaste todas las actividades obligatorias! Ya puedes copiar y entregar tus resultados.</div>`}
+    <table class="sum-table">
+      <tr><th>Actividad</th><th>Estado</th><th>Último intento</th><th>Mejor</th><th>Rondas</th></tr>
+      <tr class="optional"><td><span class="dot" style="background:#db2777"></span>Paso 1 · Tarjetas (opcional)</td><td>${flashSeen.size?"👀":"—"}</td><td colspan="3">${flashSeen.size} ${flashSeen.size===1?"tarjeta vista":"tarjetas vistas"}</td></tr>
+      ${ACTS.map(a=>{const r=RES[a.key];return `<tr class="${a.req?'':'optional'}"><td><span class="dot" style="background:${a.color}"></span>${a.name}</td>
+        <td>${r?"✅":a.req?"⏳ Falta":"—"}</td>
+        <td>${r?`<b>${r.last.score}/${r.last.total}</b>`:'<span class="muted">—</span>'}</td>
+        <td>${r?`${r.best.score}/${r.best.total}`:'<span class="muted">—</span>'}</td>
+        <td>${r?r.rounds:0}</td></tr>`;}).join("")}
+    </table>
+    ${missing.length?`<div class="notice">✎ Escribe ${missing.join(", ").replace(/, ([^,]*)$/," y $1")} en la sección «Tus datos» de arriba.</div>`:""}
+    <textarea class="report" readonly aria-label="Resumen de resultados">${esc(reportText())}</textarea>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" data-a="copy">📋 Copiar mis resultados</button>
+      <span class="muted copied" style="font-weight:700"></span>
+    </div>
+    <p class="muted" style="margin:10px 0 0;font-size:.92rem">Pega tus resultados donde te indique tu maestro/a (por ejemplo, en Google Classroom) o toma una captura de pantalla de esta sección.</p>`;
+  el.querySelector('[data-a="copy"]').onclick=async()=>{
+    const ta=el.querySelector("textarea"), out=el.querySelector(".copied");
+    const txt=reportText();
+    try{ await navigator.clipboard.writeText(txt); out.textContent="✅ ¡Copiado!"; }
+    catch(e){ ta.focus(); ta.select(); out.textContent="Selecciona el texto y cópialo (Ctrl+C / ⌘+C)."; }
+  };
+}
+
+/* ---------- sections + student info ---------- */
+function drawChips(){
+  const el=$("chips"); const all=selected.size===SECTIONS.length;
+  el.innerHTML = `<button class="chip ${all?'on':''}" data-all>Todas <span class="n">(${WORDS.length})</span></button>` +
+    SECTIONS.map((s,i)=>`<button class="chip ${selected.has(i)&&!all?'on':''}" data-sec="${i}">${esc(s)} <span class="n">(${WORDS.filter(w=>w.sec===i).length})</span></button>`).join("");
+  el.querySelectorAll("[data-sec]").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.sec;
+    if(selected.size===SECTIONS.length) selected=new Set([i]);
+    else if(selected.has(i)){ if(selected.size>1) selected.delete(i); }
+    else selected.add(i);
+    drawChips(); startAll();
+  });
+  el.querySelector("[data-all]").onclick=()=>{ selected=new Set([0,1,2,3,4]); drawChips(); startAll(); };
+}
+function startAll(){ Flash.start(); MC.start(); Match.start(); Write.start(); Scr.start(); Cross.start(); Clock.start(); renderSummary(); }
+
+["nombre","clase"].forEach(id=>{ const v=store.get("vocab-a5-"+id); if(v) $(id).value=v; });
+const today=new Date(); $("fecha").value=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,"0")}-${String(today.getDate()).padStart(2,"0")}`;
+["nombre","clase","fecha"].forEach(id=>$(id).addEventListener("input",()=>{ if(id!=="fecha") store.set("vocab-a5-"+id,$(id).value); renderSummary(); }));
+
+drawChips(); startAll();
+</script>
+</body>
+</html>
